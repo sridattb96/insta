@@ -1,0 +1,46 @@
+<html>
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+<center>Login</center>
+<p id="paragraph"></p>
+<center>
+<form id="loginform" class="pure-form pure-form-aligned">
+    <fieldset>
+        <div class="pure-control-group">
+    	   <input type="text" placeholder="Username" id="username" class = "pure-input-rounded" ></input>
+        </div>
+        <div class="pure-control-group">
+    	   <input type="password" placeholder="Password" id="password" class = "pure-input-rounded" ></input>
+        </div>
+    	<input type="submit" value="submit"></input>
+    </fieldset>
+</form>
+</center>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+var loginform = document.getElementById("loginform");
+$(loginform).on("submit", function(ev){
+                ev.preventDefault();
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:3000/users/login",
+        data: {
+            Username:document.getElementById("username").value,
+            Password:document.getElementById("password").value
+        },
+        success:function(data) {
+           if(data.toLowerCase() == "yes") {
+            alert("GOOD");
+            window.location = "success.html";
+           }
+           else if(data.toLowerCase() == "no") {
+            alert("BAD");
+           }
+        },
+        xhrFields: {withCredentials: true},
+        error:function(){
+            console.log("ERROR");
+        }
+    });
+});
+</script>
+</html>

@@ -1,0 +1,41 @@
+<html>
+  <head>    
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  </head>
+  <body>
+          <input id="tags">
+  </body>
+  <footer>
+      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+      <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+      <script>
+      $.ajax({
+          type: "GET",
+          url: "http://localhost:3000/users/search",
+          data: {
+          },
+          success:function(data){
+              var tags = document.getElementById("tags");
+              $(tags).autocomplete({
+                  source: data
+                  select: function(event, ui){
+                    window.location = "userpage.html?username=" + ui.item.label;
+                  }
+              });
+          },
+          xhrFields: {withCredentials: true},
+          error:function(){
+            console.log("ERROR");
+          }
+      });
+      $(function() {
+          var availableTags = ["ActionScript", "AppleScript"];
+          var tags = document.getElementById("tags");
+          $(tags).autocomplete({
+            source: availableTags
+          });
+      });
+      </script>
+</footer>
+
+</html>

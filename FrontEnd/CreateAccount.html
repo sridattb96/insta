@@ -1,0 +1,74 @@
+<html>
+	<head>
+		<link href = "css/bootstrap.min.css" rel = "stylesheet">
+		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+		<title> Create Account </title>
+		<center>Create Account </center>
+	</head>
+	<body> 
+		<center>
+		<form id="createaccount" class="pure-form pure-form-aligned">
+			<fieldset>
+	    		<div class="pure-control-group">
+					<input placeholder="Name" id="name" type="text" class = "pure-input-rounded" required><br></input>
+				</div>
+
+	    		<div class="pure-control-group">
+					<input placeholder="Username" id="username" type="text" class = "pure-input-rounded" required><br></input>
+				</div>
+
+	    		<div class="pure-control-group">
+					<input placeholder="Password" id="password" type="password" class = "pure-input-rounded" required><br></input>
+				</div>	
+
+	    		<div class="pure-control-group">
+					<input placeholder="Email" id="email" type="email" class = "pure-input-rounded" required><br></input>
+				</div>
+
+	    		<div class="pure-control-group">
+					<input id="inputFileToLoad" type="file" accept="image/*" class = "pure-input-rounded" class="upload"><br></input>
+				</div>
+				
+				<img id="photo-url" width="50"></img>
+				<input id="submit" type="submit"></input>	
+			</fieldset>
+		</form>
+		</center>
+
+	</body>
+	<footer>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+				<script src="upload.js"></script>
+
+		<script>
+
+			var makeaccount = document.getElementById("createaccount");
+			$(makeaccount).on("submit", function(ev) {
+				ev.preventDefault();
+				console.log("got here");
+
+				$.ajax({
+        		type: "POST",
+        		url: "http://localhost:3000/users/createaccount",
+        		data: {
+        				Name: document.getElementById("name").value,
+        				Username: document.getElementById("username").value,
+        				Password: document.getElementById("password").value,
+        				Email: document.getElementById("email").value,
+        				ProfilePic: document.getElementById("photo-url").src
+        		},
+        		success:function(data) {
+
+        			alert(data);
+        		},
+        		xhrFields: {withCredentials: true},
+        		error:function(){
+            	console.log("ERROR");
+        }
+			});
+
+    		});
+
+		</script>
+	</footer>
+</html>

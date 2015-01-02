@@ -1,0 +1,28 @@
+{
+  "name": "instagram",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "cors": "^2.5.2",
+    "emailjs": "^0.3.12",
+    "express": "3.0.6",
+    "express-session": "^1.9.3",
+    "jade": "*",
+    "mongoose": "^3.8.21"
+  },
+  "description": "dasfd",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "asdfasdf"
+  },
+  "keywords": [
+    "asdfasdf"
+  ],
+  "author": "asdf",
+  "license": "ISC"
+}
